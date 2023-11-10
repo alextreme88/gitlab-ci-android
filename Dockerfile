@@ -75,3 +75,9 @@ RUN mkdir -p /root/.android \
 
 ADD packages.txt /sdk
 RUN sdkmanager --verbose --package_file=/sdk/packages.txt
+
+# Install Fastlane
+COPY Gemfile .
+RUN gem install bundler && \
+    bundle install && \
+    gem install fastlane-plugin-firebase_app_distribution fastlane-plugin-badge
